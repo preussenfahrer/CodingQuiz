@@ -10,89 +10,47 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://bootswatch.com/4/sketchy/bootstrap.min.css">
     <!-- custom stylesheet -->
-    <lnk rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Coding Quiz!</h1>
-
+<h1 class="time"></h1>
     <!-- Info Box -->
-    <section class="rules_box">
-        <section class="rules_title"></section>
-        <span>Rules of the Quiz</span>
-    </section>
-    <section class="information">
-        <section class="instructions">There are four rules to this quiz:</section>
-        <section class="rule1">1.) After clicking the "Start Quiz" button, you will have a set time of 75 seconds to
-            complete this quiz. Questions will be presented continuously, right after one another.</section>
-        <section class="rule2">2.) When you get an answer right, the clock will continue.</section>
-        <section class="rule3">3.) If you get an answer wrong, 5 seconds will be subtracted from the clock.</section>
-        <section class="rule4">4.) When the clock runs out, or when all questions are answered, you will be given the
-            option to place your score. This will be displayed on a leader list, and saved.</section>
-    </section>
-    <section class="start_button"><button>Start Quiz</button></section>
-
-    <!-- Quiz Box -->
-    <section class="quiz_box">
-        <header>
-            <div class="title">Coding Quiz App</div>
-            <div class="timer">
-                <div class="time_left">Time Left</div>
-                <div class="time_seconds">75</div>
-            </div>
-        </header>
-        <section>
-            <section class="question_text">
-                <span>1.) Who Invented JavaScript?</span>
+    <section class="rules-container">
+        <section id="container">
+            <h1>Coding Quiz!</h1>
+            <section id="rules-container">Rules of the Quiz</section>
+            <section class="instructions">There are four rules to this quiz:</section>
+            <section class="rule1">1.) After clicking the "Start Quiz" button, you will have a set time of 75 seconds to
+                complete this quiz. Questions will be presented continuously, right after one another.</section>
+            <section class="rule2">2.) When you get an answer right, the clock will continue.</section>
+            <section class="rule3">3.) If you get an answer wrong, 5 seconds will be subtracted from the clock.
             </section>
-            <section class="answers_list">
-                <section class="answers">
-                    <span>Gregory Leighton</span>
-                    <span>Brendan Eich</span>
-                    <span>Albrecht Java</span>
-                </section>
-                <section class="question_text">
-                    <span>2.) When Was JavaScript Invented?</span>
-                </section>
-                <section class="answers_list">
-                    <section class="answers">
-                        <span>2020</span>
-                        <span>1981</span>
-                        <span>1995</span>
-                    </section>
-                </section>
-                <section class="question_text">
-                    <span>3.) What Is A Function in JavaScript?</span>
-                </section>
-                <section class="answers_list">
-                    <section class="answers">
-                        <span>A way to store code we can reuse later</span>
-                        <span>The same thing as a function in mathematics</span>
-                        <span>A way that JavaScript works</span>
-                    </section>
-                </section>
-                <section class="question_text">
-                    <span>4.) What Is A Variable in JavaScript?</span>
-                </section>
-                <section class="answers_list">
-                    <section class="answers">
-                        <span>A variable is anything that can vary</span>
-                        <span>A way that data can be stored and used</span>
-                        <span>I have no idea</span>
-                    </section>
-                </section>
-                <section class="question_text">
-                    <span>5.) Is JavaScript Related to Java?</span>
-                </section>
-                <section class="answers_list">
-                    <section class="answers">
-                        <span>Yes</span>
-                        <span>No</span>
-                        <span>I have no idea</span>
-                    </section>
-                </section>
-            </section>    
+            <section class="rule4">4.) When the clock runs out, or when all questions are answered, you will be given
+                the
+                option to place your score. This will be displayed on a leader list, and saved.</section>
+            <section class="start-button"><button id="start_button">Let's Start the Quiz!</button>
+            </section>
         </section>
-    </section>    
+    </section>
+    <!-- Quiz Box -->
+    <section class="quiz-container">
+        <section id="question-container" class="hide">
+            <section id="question">Question</section>
+            <section id="answer-buttons" class="btn-grid">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </section>
+        </section>
+        <section class="controls">
+            <button id="start-btn" class="start-btn btn">Start</button>
+            <button id="next-btn" class="next-btn btn hide">Next Question</button>
+        </section>
+        <!-- <section id="current_question"></section> -->
+    </section>
+    <script src="script.js"></script>
 </body>
+
 </html>

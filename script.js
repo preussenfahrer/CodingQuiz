@@ -1,50 +1,148 @@
-// Variables selecting key HTML elements (div id "quiz" and "results", also the submit button)
-var quizContainer = document.getElementById("quizholder");
-var resultsContainer = document.getElementById("quizresults");
-var answerButton = document.getElementById("quizbutton");
+// consts for buttons and for interacting with the quiz
+const startButton = document.getElementById('start_button')
+const nextQuestionButton = document.getElementById('next-btn')
+const questionContainerEl = document.getElementById('question-container')
+const questionEl = document.getElementById('question')
+const answerButtonEl = document.getElementById('answer-buttons')
 
-// Skeleton for building the quiz itself: these are the functions building the quiz and for showing the results
-function quizBuilder() {
-    // variable stores HTML output
-    var output = [];
+let shuffledQuestions, currentQuestionIndex
+startButton.addEventListener('click', startQuiz)
+nextQuestionButton.addEventListener('click', () => {
+    currentQuestionIndex++
+    showNextQuestion()
+})
 
-    // code for listing each question
-    quizQuestions.forEach(
-        (currentQuestion, questionNumber) => {
-            // variable storing lists of answers to questions
-            var answers = [];
+// timer: 75 seconds to complete the quiz
+var timeEl = document.querySelector(".time");
+var secondsLeft = 75;
 
-            // variable for storing individual answers
-            for (letter in currentQuestion.answers) {
-                answers.push(
-                    <label>
-                        <input type="radio" name="question${questionNumber}" value="${letter}">
-                        </input>
-                        ${letter} :
-                        ${currentQuestion.answers[letter]}
-                    </label>
-                );
-            }
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " seconds remaining!";
+
+    if(secondsLeft === 0) {
+      // keeps timer on track and on pace. Calls back to the setTime function?
+      clearInterval(timerInterval);
+      sendMessage("time is up!");
+    }
+
+  }, 1000);
+}
+// Trying to set up 5 sec penalty
+// document.getElementById('wrong').addEventListener('click', function() {
+//     sec -= 5;
+//     document.querySelector(".time").innerHTML='00:'+sec;
+// });
+setTime();
+
+// function to start Quiz App
+function startQuiz() {
+    startButton.classList.add("hide")
+// Randomly pulls questions from the questions array below
+    shuffledQuestions = questions.sort(() => Math.random() - .5)
+    currentQuestionIndex = 0
+    questionContainerEl.classList.remove("hide")
+    showNextQuestion()
+}
+
+// Will show the next question in the question Array
+function showNextQuestion() {
+    resetPage()
+    showNewQuestion(shuffledQuestions[currentQuestionIndex])
+}
+
+function showNewQuestion(question) {
+    questionEl.innerText = question.question
+    question.answers.forEach(answer => {
+        const button = document.createElement('button')
+        button.innerText = answer.text
+        button.classList.add("btn")
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
         }
-
-        // add question and answers to output
-        output.push(
-            <div class="question">
-                ${currentQuestion.question}
-            </div>
-            <div class="answers"> ${answers.join("")} </div>
-        );
-    )
+        button.addEventListener("click", pickAnswer)
+        answerButtonEl.appendChild(button)
+    })
 }
 
-function resultsShower() {
-
+function resetPage() {
+    clearStatusClass(document.body)
+    nextQuestionButton.classList.add("hide")
+    while (answerButtonEl.firstChild) {
+        answerButtonEl.removeChild(answerButtonEl.firstChild)
+    }
 }
 
-// display quiz right away (can add timer element here, maybe for an intro page?)
-quizBuilder();
+// selects answers from question array below
+function pickAnswer(e) {
+    const pickedButton = e.target
+    const correct = pickedButton.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(answerButtonEl.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+    if (shuffledQuestions.length > currentQuestionIndex + 1) {
+        nextQuestionButton.classList.remove('hide')
+    } else {
+        startButton.innerText = 'Restart'
+        startButton.classList.remove('hide')
+    }
+}
 
-// when answer submitted, show results
-answerButton.addEventListener('click', resultsShower);
+function setStatusClass(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add('correct')
+    } else {
+        element.classList.add('wrong')
+    }
+}
 
-// Quiz questions. Random topics for the purpose of practicing JS, will make more appropriate before final commit.
+function clearStatusClass(element) {
+    element.classList.remove('correct')
+    element.classList.remove('wrong')
+}
+
+// Questions to be asked in the quiz (5 very basic questions about JavaScript)
+const questions = [{
+    question: "Who Invented JavaScript?",
+    answers: [
+        { text: "Gregory Leighton", correct: false },
+        { text: "Brendan Eich", correct: true },
+        { text: "Albrecht Java", correct: false }
+    ]
+},
+{
+    question: "What Year Was JavaScript Invented?",
+    answers: [
+        { text: 2020, correct: false },
+        { text: 1981, correct: false },
+        { text: 1995, correct: true } 
+    ]
+},
+{
+    question: "What is a Function in JavaScript?",
+    answers: [
+        { text: "A way to store code that we can use later", correct: true },
+        { text: "The same thing as a function in mathematics", correct: false },
+        { text: "I have no idea", correct: false }
+    ]
+},
+{
+    question: "What is a Variable in JavaScript?",
+    answers: [
+        { text: "A variable is anything that can vary", correct: false },
+        { text: "A way that data can be stored and deployed", correct: true },
+        { text: "A way that JavaScript works", correct: false }
+    ]
+},
+{
+    question: "Is JavaScript related to Java?",
+    answers: [
+        { text: "Yes", correct: false },
+        { text: "No", correct: true },
+        { text: "I think so", correct: false }
+    ]
+},
+]
