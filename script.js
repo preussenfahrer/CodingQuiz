@@ -2,6 +2,7 @@
 const startButton = document.getElementById('start_button')
 const nextQuestionButton = document.getElementById('next-btn')
 const questionContainerEl = document.getElementById('question-container')
+const rulesContainer = document.getElementById('container')
 const questionEl = document.getElementById('question')
 const answerButtonEl = document.getElementById('answer-buttons')
 
@@ -53,6 +54,7 @@ function showNextQuestion() {
 }
 
 function showNewQuestion(question) {
+    rulesContainer.classList.add("hide")
     questionEl.innerText = question.question
     question.answers.forEach(answer => {
         const button = document.createElement('button')
