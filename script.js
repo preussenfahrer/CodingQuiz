@@ -108,91 +108,91 @@ function clearStatusClass(element) {
 
 // Questions to be asked in the quiz (5 very basic questions about JavaScript)
 // put all answers in array?
-// const questions = [{
-//     question: "Who Invented JavaScript?",
-//     answers: [
-//         { text: "Gregory Leighton", correct: false },
-//         { text: "Brendan Eich", correct: true },
-//         { text: "Albrecht Java", correct: false }
-//     ]
-// },
-// {
-//     question: "What Year Was JavaScript Invented?",
-//     answers: [
-//         { text: 2020, correct: false },
-//         { text: 1981, correct: false },
-//         { text: 1995, correct: true } 
-//     ]
-// },
-// {
-//     question: "What is a Function in JavaScript?",
-//     answers: [
-//         { text: "A way to store code that we can use later", correct: true },
-//         { text: "The same thing as a function in mathematics", correct: false },
-//         { text: "I have no idea", correct: false }
-//     ]
-// },
-// {
-//     question: "What is a Variable in JavaScript?",
-//     answers: [
-//         { text: "A variable is anything that can vary", correct: false },
-//         { text: "A way that data can be stored and deployed", correct: true },
-//         { text: "A way that JavaScript works", correct: false }
-//     ]
-// },
-// {
-//     question: "Is JavaScript related to Java?",
-//     answers: [
-//         { text: "Yes", correct: false },
-//         { text: "No", correct: true },
-//         { text: "I think so", correct: false }
-//     ]
-// },
-// ]
-
 const questions = [{
-    title: "Who Invented JavaScript?",
-    choices: [
-    "Gregory Leighton",
-    "Brendan Eich",
-    "Albrecht Java"]
-    answer: "Brendan Eich"
-        
+    question: "Who Invented JavaScript?",
+    answers: [
+        { text: "Gregory Leighton", correct: false },
+        { text: "Brendan Eich", correct: true },
+        { text: "Albrecht Java", correct: false }
+    ]
 },
 {
-    title: "What Year Was JavaScript Invented?",
-    choices: [
-    "2020",
-    "1981",
-    "1995"
+    question: "What Year Was JavaScript Invented?",
+    answers: [
+        { text: 2020, correct: false },
+        { text: 1981, correct: false },
+        { text: 1995, correct: true } 
+    ]
+},
+{
+    question: "What is a Function in JavaScript?",
+    answers: [
+        { text: "A way to store code that we can use later", correct: true },
+        { text: "The same thing as a function in mathematics", correct: false },
+        { text: "I have no idea", correct: false }
+    ]
+},
+{
+    question: "What is a Variable in JavaScript?",
+    answers: [
+        { text: "A variable is anything that can vary", correct: false },
+        { text: "A way that data can be stored and deployed", correct: true },
+        { text: "A way that JavaScript works", correct: false }
+    ]
+},
+{
+    question: "Is JavaScript related to Java?",
+    answers: [
+        { text: "Yes", correct: false },
+        { text: "No", correct: true },
+        { text: "I think so", correct: false }
+    ]
+},
 ]
-answer: "1995"
-},
-{
-    title: "What is a Function in JavaScript?",
-    choices: [
-         "A way to store code that we can use later",
-        "The same thing as a function in mathematics", 
-         "I have no idea",
-    ]
- answer: "A way to store code that we can use later",
-},
-{
-    title: "What is a Variable in JavaScript?",
-    choices: [
-         "A variable is anything that can vary", 
-         "A way that data can be stored and deployed",
-        "A way that JavaScript works",
-    ]
-answer: "A way that data can be stored and deployed"
-},
-{
-    title: "Is JavaScript related to Java?",
-    choices: [
-         "Yes", 
-         "No", 
-         "I think so", 
-    ]
-answer: "No"
-}
-];
+
+// const questions = [{
+//     title: "Who Invented JavaScript?",
+//     choices: [
+//     "Gregory Leighton",
+//     "Brendan Eich",
+//     "Albrecht Java"],
+//     answer: "Brendan Eich"
+        
+// },
+// {
+//     title: "What Year Was JavaScript Invented?",
+//     choices: [
+//     "2020",
+//     "1981",
+//     "1995"
+// ]
+// answer: "1995"
+// },
+// {
+//     title: "What is a Function in JavaScript?",
+//     choices: [
+//          "A way to store code that we can use later",
+//         "The same thing as a function in mathematics", 
+//          "I have no idea",
+//     ]
+//  answer: "A way to store code that we can use later",
+// },
+// {
+//     title: "What is a Variable in JavaScript?",
+//     choices: [
+//          "A variable is anything that can vary", 
+//          "A way that data can be stored and deployed",
+//         "A way that JavaScript works",
+//     ]
+// answer: "A way that data can be stored and deployed"
+// },
+// {
+//     title: "Is JavaScript related to Java?",
+//     choices: [
+//          "Yes", 
+//          "No", 
+//          "I think so", 
+//     ]
+// answer: "No"
+// }
+// ];
